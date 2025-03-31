@@ -6,7 +6,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ssm
+  IMAGE_NAME: ashcorr/ssm
   PLATFORMS: linux/amd64,linux/arm64
 
 jobs:
@@ -29,6 +29,9 @@ jobs:
           uses: docker/setup-qemu-action@v2
           with:
             platforms: ${{ env.PLATFORMS }}
+
+        - name: Set up Docker Buildx
+          uses: docker/setup-buildx-action@v3
 
         - name: Extract metadata (tags, labels) for Docker
           id: meta
